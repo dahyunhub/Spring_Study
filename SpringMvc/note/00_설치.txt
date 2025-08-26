@@ -1,0 +1,35 @@
+# 스프링 전용 IDE 설치
+
+1. STS (이클립스 기반)
+2. Visual Studio Code
+3. IntelliJ (유료)
+
+# 스프링 부트 프로젝트 만들기
+
+1. 공식 웹 사이트에서 만들기 (프로젝트 생성기, https://start.spring.io/)
+2. IDE에서 만들기
+3. 프로젝트 생성시 항목 설정
+
+	(1) Name : 프로젝트 이름
+	(2) Type : 프로젝트 관리 도구 
+		(Gradle: 안드로이드할 때 주로 사용, Maven: 전통적인 자바의 프로젝트 관리도구)
+	(3) Packaging : 프로젝트 빌드 결과물의 확장자를 선택 
+		(Jar: 실행파일, War: 주로 웹서버(Tomcat)에 올려놓는 용도로 사용)
+	(4) Java Version : 프로젝트에서 사용할 자바 버전을 선택 (가장 안정적인 버전을 선택)
+	(5) Language : 프로젝트에서 사용할 프로그래밍 언어를 선택 (Java, Kotlin, Groovy)
+	(6) Group : 그룹 이름 (주로 회사명을 사용)
+	(7) Artifact : 프로젝트 이름 (다른 프로젝트에서 우리 프로젝트를 참조할 때 사용)
+	(8) Version : 프로젝트 빌드 결과물의 버전 (ex0.0.13 등도 가능)
+	(9) Description : 프로젝트에 대한 설명
+	(10) Package : 프로젝트에서 사용할 root 패키지 이름
+
+4. 의존성 선택
+ 
+ - 의존성(dependencies) : 이 프로젝트를 만들기 위해서 필요한 다른 프로젝트(라이브러리)들
+ - Spring Web : 웹 프로젝트에 MVC 디자인 패턴을 쉽게 적용할 수 있는 스프링 프레임워크
+ - Thymeleaf : JSP에서 쓸대없는 기능들을 모두 제거한 view library
+ 			   EL/JSTL과 비슷한 기능들만 남아있다. 
+ 			   
+# 프로젝트 실행 해보기
+ - 생성한 프로젝트 이름으로 된 main 메서드를 실행한다.
+ - 포트번호가 겹치는 경우 application.properties 파이엘 server.port를 수정할 수 있다. 
