@@ -1,0 +1,62 @@
+03_Lombok.txt
+
+# Lombok
+
+- 간단하게 어노테이션만 추가하여 자바빈 객체를 쉽게 만들 수 있는 라이브러리
+- 데이터 클래스(dto)를 아주 편리하게 생성할 수 있다.
+- Spring의 다양한 기능들도 훨씬 편리하게 사용할 수 있게 된다.
+
+# Lombok 설치
+
+1. 롬복 검색 후 다운로드
+2. IDE 위치를 찾아 롬복 설치
+3. build.gradle에 의존성 등록 (Maven Repository에 가서 프로젝트 이름 및 버전 찾기)
+4. 프로젝트 우클릭 후 Gradle -> Refresh Gradle Project 
+
+
+# Lombok의 어노테이션들
+
+@Getter
+ - 클래스 위에 @Getter를 붙이면 해당 클래스의 모든 필드에 대한 Getter를 자동으로 생성해준다.
+ - 필드 위에 @Getter를 붙이면 해당 필드에 대한 Getter만 생성한다.
+
+@Setter
+ - 클래스 위에 @Setter를 붙이면 해당 클래스의 모든 필드에 대한 Setter를 자동으로 생성해준다.
+ - 필드 위에 @Setter를 붙이면 해당 필드에 대한 Setter만 생성한다.
+
+@ToString
+ - 클래스 위에 @ToString을 붙이면 해당 클래스의 toString()을 자동으로 생성해준다.
+
+@NoArgsConstructor
+ - 기본 생성자를 자동으로 생성해준다.
+
+@AllArgsConstructor
+ - 모든 필드를 채워야하는 생성자를 자동으로 생성해준다.
+
+@RequiredArgsConstructor
+ - 채워야 하는 필드만 채우는 생성자를 자동으로 생성해준다.
+ - 롬복은 @NonNull이 붙어있는 필드를 반드시 채워야하는 필드라고 생각한다.
+ - final이 붙어있는 필드도 반드시 채워야하는 필드라고 생각한다.
+
+@NonNull
+ - 해당 필드에 @NonNull을 붙이면 null값이 들어오는 경우 NullPointerException을 발생시키는 코드를 자동으로 추가해준다.(생성자 또는 Setter에 추가할 것 같다..)
+ 
+@EqualsAndHashCode
+ - 해당 클래스의 equals()와 hashCode()를 자동으로 생성
+ - equals()는 모든 필드의 값이 일치하면 두 객체가 서로 같은 것으로 판정
+ - hashCode()는 모든 필드의 값이 동일하다면 항상 같은 값을 얻어낼 수 있게 만들어짐
+ 
+@Data
+ 
+ @Getter
+ @Setter
+ @ToString
+ @EqualsAndHashCode
+ @RequriedArgsConstructor
+ 를 하나로 합친 어노테이션
+ 
+ - 기본적으로 @RequiredArgsConstructor를 사용하기 때문에 
+   기본 생성자가 생기지 않을수도 있으므로 주의해야 한다.
+   (자바빈 객체로 판정되려면 반드시 기본 생성자가 존재해야 한다.)
+   
+   
