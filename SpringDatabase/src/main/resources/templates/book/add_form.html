@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>새 상품 추가하기</title>
+</head>
+<body>
+
+<form id="f" action="" method="POST">
+	제목: <input type="text" name="book_title"> <br>
+	작가: <input type="text" name="writer"> <br>
+	출간일: <input type="date" name="publication_date"> <br>
+
+	<!-- 여러 선택지를 두고 선택할 경우 (강사님 ex)
+	<select name="clothes_size">
+		<option th:each="size: ${sizes}" th:value="${size}" th:text="${size}"></option>
+	</select> <br>-->
+</form>		
+
+<button id="btn1">등록ver.1</button>
+<button id="btn2">등록ver.2</button>
+</body>
+
+<script>
+	const btn1 = document.getElementById('btn1');
+	const btn2 = document.getElementById('btn2');
+	const f = document.getElementById('f');
+		
+	btn1.addEventListener('click', (e) => {
+		f.action='./add1';	
+		f.submit();
+	})
+	
+	btn2.addEventListener('click', (e) => {
+		f.action='./add2';
+		f.submit();
+	})
+	
+</script>
+</html>

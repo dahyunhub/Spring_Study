@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>사원 목록</title>
+	<link rel="stylesheet" href="/emp/css/list.css"/>
+</head>
+<body>
+	
+	<h3>사원 목록</h3>
+	
+	<div id="emp_list" th:each="employee: ${employees}">
+		<div class="employee_id" th:text="${employee.employee_id}"></div>
+		<div class="first_name" th:text="${employee.first_name}"></div>
+		<div class="last_name" th:text="${employee.last_name}"></div>
+		<div class="salary" th:text="${employee.salary}"></div>
+		<div class="job_id" th:text="${employee.job_id}"></div>
+	</div>
+	
+</body>
+</html>

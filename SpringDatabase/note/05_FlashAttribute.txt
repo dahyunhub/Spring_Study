@@ -1,0 +1,57 @@
+05_FlashAttribute.txt
+
+# Flash Attribute
+
+ - 스프링은 리다이렉트시에도 어트리뷰트를 전달 할 수 있는 Flash Attribute 기능을 제공한다.
+ - 기본적으로 리다이렉트시에는 쿼리 스트링을 통한 파라미터 전달만 할 수 있었다.
+ - 어트리뷰트는 파라미터와는 다르게 단순 문자열 뿐 아니라 자바 객체를 전달 할 수 있다.
+ 
+
+# RedirectAttributes
+
+ - 컨트롤러에서 RedirectAttributes 객체를 바인딩 받을 수 있다.
+ - addAttribute()를 통해 어트리뷰트를 추가하면 실제로는 리다이렉트시에 쿼리 스트링이 추가된다.
+ - addFlashAttribute()를 통해 추가하는 어트리뷰트는 실제로는 세션을 활용하여
+   리다이렉트가 도착 할 때까지만 유지되는 어트리뷰트가 된다.
+ - flashAttribute는 리다이렉트로 도착한 컨트롤러의 모델 객체에 저장되어 있다.
+
+
+# 사용 예
+
+ - 리다이렉트 보내는 쪽
+ 
+ @GetMapping("/guide/list")
+	public String to_list(RedirectAttributes rattr) {
+		rattr.addAttribute("abc", 123);
+		
+		rattr.addFlashAttribute("fruit", new Fruit(3, "토마토", 3333, "도마도농장"));
+		rattr.addFlashAttribute("babo", "진짜바보상처받는다");
+		
+		return "redirect:/guide";
+	}
+	
+ - 리다이렉트 받는 쪽
+ 
+ @GetMapping("/guide")
+	public void guide(HttpServletRequest request, Model model) {
+		log.info("abc: {}", request.getParameter("abc"));
+		
+		log.info("fruit from flashAttribute: {}", model.getAttribute("fruit"));
+		log.info("babo from flashAttribute: {}", model.getAttribute("babo"));
+	}
+	
+# 숙제
+ 글 테이블(글_id pk), 댓글 테이블(댓글_id pk, 글 id fk)
+
+ - 게시판 글 목록
+ - 게시판 글쓰기
+ - 게시판 글 내용 보기
+ - 게시판 글 수정 (게시글 비밀번호 필요 (비밀번호가 일치할때만))
+ - 게시판 글 삭제 (게시글 비밀번호 필요 (비밀번호가 일치할때만))
+ 
+ - 글 내용 밑에 댓글 추가
+ - 댓글 수정 (댓글 비밀번호 필요)
+ - 댓글 삭제 (댓글 비밀번호 필요)
+ 
+ - 각 비밀번호들이 DB에는 해쉬로 저장되도록 만들기
+ 

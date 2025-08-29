@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title th:text="${book.book_id} + '번 상품 수정'"></title>
+</head>
+<body>
+	
+	<h3>상품 수정하기</h3>
+	
+	<form id="f" action="./modify" method="POST">
+		ID: <input type = "text" name="book_id" th:value="${book.book_id}" readonly> <br>
+		책 제목: <input type = "text" name="book_title" th:value="${book.book_title}"> <br>
+		작가: <input type = "text" name="writer" th:value="${book.writer}"> <br>
+		출간일: <input type = "date" name="publication_date" th:value="${book.publication_date}">
+				
+	</form>
+	
+	<button type="submit" form="f">수정하기</button>
+	<button>목록으로</button>
+	
+	<h3>시간 보내보기 (DTO로 바인딩 확인 테스트)</h3>
+	
+	<form action="./timetest" method="POST">
+		<input type="date" name="regist_date">
+		<input type="submit" value="테스트!">		
+	</form>
+	
+	<h3>시간 보내보기2 (DTO로 바인딩 확인 테스트)</h3>
+
+	<form action="./timetest2" method="POST">
+		<input type="datetime-local" name="regist_date2">
+		<input type="submit" value="테스트!">		
+	</form>
+	
+</body>
+</html>

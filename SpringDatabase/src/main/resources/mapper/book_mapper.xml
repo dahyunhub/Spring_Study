@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="Books">
+  <select id="selectAll" resultType="book">
+    SELECT * FROM books ORDER BY book_id
+  </select>
+
+  <select id="get" resultType="book" parameterType="Integer">
+  	SELECT * FROM books WHERE book_id=#{book_id}
+  </select>
+
+  <delete id="delete" parameterType="Integer">
+  	DELETE FROM books WHERE book_id = #{book_id}
+  </delete>
+  
+  <update id="modify" parameterType="java.util.HashMap">
+  	UPDATE 
+  		books 
+  	SET 
+		book_id = #{book_id},
+		book_title = #{book_title},
+		writer = #{writer},
+		publication_date = #{publication_date}
+	WHERE 
+		book_id = #{book_id}
+  </update>
+  
+  <insert id="add1" parameterType="book">
+  	 INSERT INTO Books (book_id, book_title, writer, publication_date) 
+  	 VALUES (book_id_seq.nextval, #{book_title}, #{writer}, #{publication_date})
+  </insert> 
+  
+  
+  <!--
+	insert ver2 : insert 하기 전에 selectKey를 활용해 기본키를 먼저 뽑는 방식
+  	이 insert의 실행 결과로 성공 여부 대신에 방금 insert에 성공한 기본키 값을 반환하게 된다. 
+  -->
+  
+   <insert id="add2" parameterType="book">
+   <!--selectKey로 미리 쓸 값을 빼낼수 있다 그리고 밑의 value에서는 빼낸 값을 활용할 수 있다.-->
+   	<selectKey keyProperty="book_id" resultType="Integer" order="BEFORE">
+   		SELECT book_id_seq.nextval FROM dual
+   	</selectKey>
+  	 INSERT INTO Books (book_id, book_title, writer, publication_date) 
+  	 VALUES (${book_id}, #{book_title}, #{writer}, #{publication_date})
+  </insert> 
+  
+</mapper>

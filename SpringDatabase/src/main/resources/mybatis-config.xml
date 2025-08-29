@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- Mybatis 전체 설정하는 곳 -->
+	
+	<!-- 데이터소스(DB와의 연결) 설정 -->
+	
+	<!-- 매퍼 설정(실질적인 쿼리문이 작성되는 곳) -->
+	
+	<!-- 쓰고싶은 별칭 설정(Mybatis XML 내부에서 변수처럼 사용함) -->
+
+	<typeAliases>
+		<typeAlias type="com.kd.springdatabase.dto.Employee" alias="emp"/>
+		<typeAlias type="com.kd.springdatabase.dto.Book" alias="book"/>
+	</typeAliases>
+</configuration>

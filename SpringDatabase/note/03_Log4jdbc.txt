@@ -1,0 +1,37 @@
+03_Log4jdbc.txt
+
+# Log4jdbc
+
+ - jdbc에서 발생한느 일들을 로그에 추가해주는 라이브러리
+ - Mybatis가 어떤 순서로 동작하는지 알아보기 쉽고 디버깅에 굉장히 유용하다.
+ 
+# Log4jdbc 설정
+
+ (0) 의존성 추가하기
+	- https://mvnrepository.com/artifact/org.bgee.log4jdbc-log4j2/log4jdbc-log4j2-jdbc4.1/1.16
+	- 위 링크에서 Maven 디펜던시부분을 pom.xml의 dependencies 파트에 추가
+
+ 
+ (1) 기존의 jdbc 연결 설정을 다음과 같이 수정하기
+ 	
+ 	spring.datasource.driver-class-name=net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+	spring.datasource.url=jdbc:log4jdbc:oracle:thin:@localhost:1521:XE
+ 
+ (2) classpath에 log4jdbc.log4j2.properties 파일 추가하기
+ 
+ 	log4jdbc.spylogdelegator.name=net.sf.log4jdbc.log.slf4j.slf4jSpyLogDelegator
+ 	
+# Log4jdbc 관련 Logger 설정하기
+
+	logback-spring.xml파일 추가 후 다음과 같이 작성하기
+ 
+ 	<?xml version="1.0" encoding="UTF-8"?>
+	<configuration>
+		<include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+		<logger name="jdbc.audit" level="OFF"/>
+		<logger name="jdbc.resultset" level="OFF"/>
+		<logger name="jdbc.sqlonly" level="OFF"/>
+	</configuration>
+ 
+  

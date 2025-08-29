@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>모든 책 리스트</title>
+	<link rel="stylesheet" href="/book/css/list.css"/>
+</head>
+<body>
+	
+	<h3>책 리스트</h3>
+	
+	<div id="book_list" th:each="book: ${books}">
+		<div class="book_id" th:text="${book.book_id}"></div>
+		<div class="book_title" th:text="${book.book_title}"></div>
+		<div class="writer" th:text="${book.writer}"></div>
+		<div class="publication" th:text="${book.publication_date}"></div>
+		<div>
+			<button class="modi_btn" th:data-id="${book.book_id}">수정</button>
+			<button class="del_btn" th:data-id="${book.book_id}">삭제</button>
+			<form action="./delete" method="POST">
+				<input type="hidden" name="book_id" th:value="${book.book_id}">
+			</form>
+		</div>
+	</div>
+	<div style>
+		<button onclick="location.href = './add';">새 책 추가하기...</button>
+	</div>
+<script src="/book/js/list.js"></script>
+</body>
+</html>

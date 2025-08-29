@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- mybatis가 Employees 안에 selectAll, selectOne 메소드를 자동으로 만들어준다. (resultset을 리스트로 만들어서)-->
+<mapper namespace="Employees">
+  <select id="selectAll" resultType="emp">
+    SELECT * FROM employees2
+  </select>
+  <!-- parameterType은 지정해줘야 할 때도 있고, 안해줘도 괜찮을 때가 있다? -->
+  <select id="selectOne" resultType="emp" parameterType="Integer">
+  	SELECT * FROM employees2 WHERE employee_id = #{id}
+  </select>
+  
+</mapper>
