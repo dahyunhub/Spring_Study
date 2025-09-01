@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title th:text="${boardDto.board_title}">글 내용 보는 페이지</title>
+</head>
+<body>
+
+	<div th:object="${boardDto}">
+		<div>글번호<input type="text" th:field="*{board_id}"/></div>
+		<div>조회수<input type="text" th:field="*{board_view_count}"/></div>
+		<div>작성자<input type="text" th:field="*{board_writer}"/></div>
+		<div>글내용<textarea th:field="*{board_content}"></textarea></div>
+	</div>
+	
+	
+
+</body>
+</html>

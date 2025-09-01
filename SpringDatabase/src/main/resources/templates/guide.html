@@ -9,9 +9,13 @@
 	<h3>가이드 페이지 입니다.</h3>
 	
 	<ul>
-		<li><a href="./guide/desc1">설명1</a></li>
-		<li>설명2</li>
-		<li>설명3</li>
+		<li><a th:href="@{/guide/desc1}">플래시 어트리뷰트</a></li>
+		<li><a th:href="@{/guide/session1}">세션1</a></li>
+		<li><a th:href="@{/guide/session2}">세션2</a></li>
+		<li><a th:href="@{/guide/session3}">세션3</a></li>
+		
+		<li><a th:href="@{/guide/cookie/add}">쿠키 추가하는 페이지</a></li>
+		<li><a th:href="@{/guide/cookie/read}">쿠키 읽는 페이지</a></li>
 	</ul>
 	
 	

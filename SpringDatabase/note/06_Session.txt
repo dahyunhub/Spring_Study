@@ -1,0 +1,19 @@
+06_Session.txt
+
+# 스프링에서 세션 사용하는 방법
+
+ 1. JSP에서 사용하던 HttpServletRequest 객체를 주입받아 사용하기
+ 2. HttpSession을 바로 주입받아 사용하기
+ 3. @SessionAttribute를 통해 세션 객체를 꺼내지도 않고 어트리뷰트만 사용하는 방식
+ 
+# @SessionAttribute 사용하기
+
+ - 객체를 꺼내는 작업을 생략하고 어트리뷰트만 쉽게 꺼내 사용할 수 있다.
+ - required를 false로 설정하면 해당 값을 주입받지 못하는 경우에도 예외가 발생하지 않는다.
+ 
+ 	@GetMapping("/session3")
+	public String sessionPage3(
+		@SessionAttribute String icecream,
+		@SessionAttribute(required = false) String flavor) { 
+		...
+	}

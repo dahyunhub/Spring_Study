@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="Boards">
+
+
+  <select id="get" resultType="boardDto" parameterType="Integer">
+  	SELECT 
+  		BOARD_ID,
+  		BOARD_TITLE,
+  		BOARD_WRITER,
+  		BOARD_WRITER_IP_ADDR,
+  		BOARD_PASSWORD,
+  		BOARD_CONTENT,
+  		BOARD_WRITE_DATE,
+  		BOARD_VIEW_COUNT,
+  		BOARD_POS_COUNT,
+  		BOARD_NEG_COUNT
+  	FROM 
+  		jspboard
+  	WHERE
+  		board_id = #{board_id}
+  </select>
+  
+  <update id="plusViewCount" parameterType="Integer">
+  	UPDATE
+  		jspboard
+  	SET
+  		board_view_count = board_view_count + 1
+  	WHERE
+  		board_id = #{board_id}	
+  </update>
+
+</mapper>

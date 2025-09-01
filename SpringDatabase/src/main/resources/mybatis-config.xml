@@ -5,14 +5,15 @@
 <configuration>
 	<!-- Mybatis 전체 설정하는 곳 -->
 	
-	<!-- 데이터소스(DB와의 연결) 설정 -->
+	<!-- 원래 데이터소스(DB와의 연결) 설정하는 곳(스프링이 나중에 스캔해서 알아서 여기에 붙임) -->
 	
-	<!-- 매퍼 설정(실질적인 쿼리문이 작성되는 곳) -->
+	<!-- 매퍼 설정(실질적인 쿼리문이 작성되는 곳)하는 곳(스프링이 나중에 스캔해서 알아서 여기에 붙임) -->
 	
 	<!-- 쓰고싶은 별칭 설정(Mybatis XML 내부에서 변수처럼 사용함) -->
 
 	<typeAliases>
 		<typeAlias type="com.kd.springdatabase.dto.Employee" alias="emp"/>
 		<typeAlias type="com.kd.springdatabase.dto.Book" alias="book"/>
+		<typeAlias type="com.kd.springdatabase.board.dto.BoardDto" alias="boardDto"/>
 	</typeAliases>
 </configuration>

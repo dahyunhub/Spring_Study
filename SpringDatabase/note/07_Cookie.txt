@@ -1,0 +1,6 @@
+07_Cookie.txt
+
+# 스프링에서 쿠키 사용하기
+
+ 1. JSP에서 하던대로 request 객체와 response 객체를 사용해 쿠키에 접근한다.
+ 2. @CookieValue 어노테이션을 사용하면 쿠키를 간편하게 읽을 수 있다. 

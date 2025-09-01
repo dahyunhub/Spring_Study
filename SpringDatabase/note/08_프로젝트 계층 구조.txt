@@ -1,0 +1,62 @@
+08_프로젝트 계층 구조.txt
+
+# 프로젝트 계층
+
+ - 프로젝트를 구성하는 소스 코드들을 계층별로 분리한 것
+ - 화면 계층 (Presentation Layer)
+ - 비즈니스 계층 (Business Layer)
+ - 영속 계층 (Persistence Layer)
+ 
+# 화면 계층
+
+ - 화면에 보이는 부분을 작성하는 코드를 의미하는 계층
+ - MVC로 치면 V에 해당하는 부분
+ 
+# 비즈니스 계층
+
+ - 고객의 요구사항(사업과 관련된 내용)을 구현하는 계층
+ - 웹에서는 하나의 요청을 처리하기 위해 여러개의 비즈니스 로직이 필요한 경우도 있고 
+   같은 비즈니스 로직을 필요로 하는 요청이 여러개 있을 수도 있기 때문에 
+   컨트롤러와 비즈니스 로직간의 계층 분리가 필요하다. 
+ - MVC의 Controller 부분에서 처리 부분을 분리한 내용에 해당한다.
+
+# 영속 계층
+
+ - 프로젝트에 필요한 데이터에 접근하는 코드를 구현하는 계층
+ - 하나의 비즈니스 로직을 처리하기 위해 여러 곳의 데이터에 접근이 필요한 경우도 있고,
+   같은 데이터 처리를 필요로하는 비즈니스 로직도 많기 때문에 비즈니스 계층과 영속 계층의 분리가 필요하다. 
+ - 데이터베이스에 접근하여 데이터를 모델에 실어놓는 소스 코드가 영속 계층에 해당한다.
+ 
+# 보편적인 스프링 웹 프로젝트에서 각 계층에 대한 클래스 이름 규칙
+
+ - 비즈니스 로직 클래스: xxxService(인터페이스), xxxServiceImpl(인터페이스 구현체)
+ - 영속 계층 클래스: xxxMapper(Mybatis), xxxRepository, xxxDao
+ - 데이터 모델 클래스: xxxDTO(Getter/Setter), xxxVO(Getter만 가능한 느낌)
+ 
+# 웹 프로젝트에서 패키지를 나누는 방식
+
+ - 프로젝트 규모가 작은 경우
+ 
+ 	컨트롤러, 비즈니스 계층, 영속 계층, 모델을 구분 할 수 있도록 패키지를 작성한다.
+ 	
+ 	ex) kr.co.company.shoppingmall.controller.CartController
+ 	    kr.co.company.shoppingmall.controller.ProductController
+ 	    kr.co.company.shoppingmall.dto.ProductDTO
+ 	    kr.co.company.shoppingmall.dto.CartDTO
+ 	    kr.co.company.shoppingmall.service.CartService
+ 	    kr.co.company.shoppingmall.service.CartServiceImpl
+ 	    
+ - 프로젝트 규모가 큰 경우
+ 
+   우선 비즈니스 단위별로 패키지 구분을 한 뒤
+   내부에서 컨트롤러, 비즈니스 계층, 영속 계층, 모델을 구분할 수 있도록 패키지를 작성한다.
+    
+    ex) kr.co.company.shoppingmall.cart.controller
+    	kr.co.company.shoppingmall.cart.service
+    	kr.co.company.shoppingmall.cart.dto
+    	kr.co.company.shoppingmall.cart.mapper
+    	kr.co.company.shoppingmall.member.controller
+    	kr.co.company.shoppingmall.member.service
+    	kr.co.company.shoppingmall.member.dto
+    	kr.co.company.shoppingmall.member.mapper
+   
