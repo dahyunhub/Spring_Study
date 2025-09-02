@@ -3,13 +3,52 @@
 <head>
 	<meta charset="UTF-8" />
 	<title>홈 입니다</title>
+	<link rel="stylesheet" th:href="@{/home/css/index.css}">
 </head>
 <body>
 	
 	<h1>Restful을 사용해봅시다.</h1>
 	
 	<ul>
-		<li><a th:href="@{/restful/value1}">문자열</a></li>
+		<li><a th:href="@{/restful/value1}">문자열(text/plain)</a></li>
+		<li><a th:href="@{/restful/value2}">문자열(text/html)</a></li>
+		<li><a th:href="@{/restful/value3}">자바빈 객체(JSON)</a></li>
+		<li><a th:href="@{/restful/value4}">자바빈 객체(XML)</a></li>
+		<li><a th:href="@{/restful/value5}">자바빈 객체 여러개(JSON)</a></li>
+		<li><a th:href="@{/restful/value6}">자바빈 객체 여러개(XML)</a></li>
 	</ul>
+	
+	<h3># Ajax</h3>
+	
+	<ul id="ajax_list">
+		<li id="ajax_req">Ajax 요청 보내기 (Click!)</li>
+	</ul>
+	
+	<h3># Ajax (JSON 형식 응답 받기)</h3>
+	
+	<ul id="ajax_json_list">
+		<li id="ajax_json_req">Ajax로 JSON 데이터 받아오기 (Click!)</li>
+	</ul>
+	
+	<h3># Ajax로 요청에 데이터 실어보내기</h3>
+	
+	<ol id="ajax_method_list">
+		<li id="ajax_get_req">GET 방식 (query string)</li>
+		<li id="ajax_post_req">POST방식 (form 데이터)</li>
+		<li id="ajax_post_req2">POST방식 (JSON 데이터)</li>
+		<li id="ajax_put_req">PUT방식</li>
+		<li id="ajax_delete_req">DELETE방식</li>
+	</ol>
+	
+	<h3># Ajax 응답의 상태 코드 활용하기</h3>
+	
+	<ul>
+		<li id="ajax_status_req">눌러보세요!</li>
+		<li id="not">404</li>
+		<li id="ok">200</li>
+		<li id="bad">500</li>
+	</ul>
+	
+	<script th:src="@{/home/js/index.js}"></script>
 </body>
 </html>

@@ -1,0 +1,29 @@
+@charset "UTF-8";
+/*주석을 한글로 하기 위해서 명시적으로 표시해준다?!*/
+
+
+#ajax_req, 
+#ajax_json_req,
+#ajax_method_list,
+ajax_status_req {
+	width: fit-content;
+	padding: 3px;
+	user-select: none;
+}
+
+
+#ajax_req:hover, 
+#ajax_json_req:hover,
+#ajax_method_list > li:hover,
+ajax_status_req:hover {
+	background-color: red;
+	cursor: pointer;
+}
+
+#ajax_status_req ~ li {
+	display: none;
+}
+
+#ajax_status_req ~ li.show {
+	display: block;
+}

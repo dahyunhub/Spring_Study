@@ -1,0 +1,42 @@
+02_Ajax.txt
+
+# AJAX (Async Javascript and XML)
+
+ - 비동기 자바스크립트와 XML(또는 JSON)
+ - 자바스크립트로 서버에 비동기 요청을 보내는 문법
+  ※ 비동기 요청 - 현재 웹 페이지를 새로고침 하지 않고 요청을 보내 응답을 받아오는 것
+ - 비동기 요청은 일반 컨트롤러에 요청을 보내 전체 웹 페이지를 받아오는 경우보다
+   @RestController에 요청을 보내 데이터만 받아온 후 페이지의 일부분을 수정하는 식으로 
+   활용하는 경우가 많다.
+ - 비동기 요청에 대한 응답은 이벤트 처리 형식으로 구현할 수 있다.
+ - 
+ 
+# XMLHttpRequest
+
+ - 자바스크립트에서 비동기 요청을 보내기 위해 사용하는 객체
+ - 이것을 통해 요청을 보내면 브라우저가 웹 페이지를 새로고침하지 않는다.
+ - open(method, uri)을 통해 요청에 대한 설정을 먼저 해놓은 후
+   send(body)를 통해 설정된대로 요청을 보낸다.
+ - send를 통해 데이터를 실어보낼 때는 문자열만 보낼 수 있다.
+   (랜선을 타고 갈때 문자열로 가야 0과 1로 변환하기 쉽기 때문에...)
+ - send시에 body에 실어보낼 내용이 있담녀 setRequestHeader를 통해
+   content-type을 설정하여 body에 어떤 데이터를 보내는지 명시해야 한다.
+   (폼 형식은 application/x-www-form-urlencoded, JSON은 application/json)
+
+# XMLHttpRequest의 이벤트 처리
+
+ - xhttp 객체 생성 후 해당 객체에 변화가 일어날 때마다
+   onreadystatechage 이벤트가 발생한다. (xhttp 객체의 readyState 속성이 변화한다.)
+ - readyState 1 : open()에 성공했을 때
+ - readyState 2 : send()를 보낸 후 응답이 도착했을 때
+ - readyState 3 : 응답에 대한 처리를 시작했을 때
+ - readyState 4 : 응답에 대한 처리가 모두 완료되었을 때
+ - readyState가 4로 변하면 onload 이벤트가 발생한다.
+ 
+# JSON 메서드들
+
+ - JSON.stringify(obj): 자바스크립트 객체를 JSON 문자열로 변환하는 메서드
+ - JSON.parse(json): JSON 문자열을 자바스크립트 객체로 변환하는 메서드
+ - 스프링 컨트롤러로 JSON 형식 데이터를 보냈다면 컨트롤러 쪽에서는 
+   @RequestBody를 사용해 JSON 형식 데이터를 자바 객체로 바인딩 해준다. 
+   (jackson-databind)
