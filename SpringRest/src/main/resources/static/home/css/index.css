@@ -5,17 +5,21 @@
 #ajax_req, 
 #ajax_json_req,
 #ajax_method_list,
-ajax_status_req {
+#ajax_status_req {
 	width: fit-content;
 	padding: 3px;
 	user-select: none;
+}
+
+#ajax_method_list {
+	margin: 10px 30px;
 }
 
 
 #ajax_req:hover, 
 #ajax_json_req:hover,
 #ajax_method_list > li:hover,
-ajax_status_req:hover {
+#ajax_status_req:hover {
 	background-color: red;
 	cursor: pointer;
 }

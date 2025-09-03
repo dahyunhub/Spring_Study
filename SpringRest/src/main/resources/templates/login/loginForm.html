@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>로그인</title>
+	<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+</head>
+<body>
+	
+	<form id="loginForm">
+		<div>ID: <input type="text" name="user_id"></div>
+		<div>PW: <input type="text" name="user_password"></div>
+		<button type="submit">로그인하기</button>
+	</form>
+	
+	<script>	
+		$('#loginForm').submit(function(e) {
+			e.preventDefault();
+			
+			$.ajax({
+				url: '/login/submit',
+				type:'post',
+				data: $(this).serialize(),
+				success: function(response) {
+					if(response.success) {
+						window.location.href = '/login/logined';
+					} else {
+						window.alert(response.message);
+					}
+				}
+			});			
+		});
+	</script>
+</body>
+</html>
